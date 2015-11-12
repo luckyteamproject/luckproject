@@ -21,8 +21,25 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.test.web" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd" />
 	
-	
-	
+	<!--   datasoruce  -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<beans:property name="url" value="jdbc:mysql://glaemfdjd.cafe24.com:3306/glaemfdjd"/>
+		<beans:property name="username" value="glaemfdjd"/>
+		<beans:property name="password" value="vmfhwprxm00"/>
+	</beans:bean>
+	<!--  transaction manager  -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	<!--  mybatis  -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"/>
+<!-- 		<beans:property name="mapperLocations" value="classpath:com/cafe24/glaemfdjd/service/mybatis-Mapper.xml"/> -->
+	</beans:bean>
+		<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
+	</beans:bean>
 </beans:beans>

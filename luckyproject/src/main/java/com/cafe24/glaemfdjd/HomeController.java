@@ -1,4 +1,4 @@
-package com.test.web;
+package com.cafe24.glaemfdjd;
 
 import java.text.DateFormat;
 import java.util.Date;

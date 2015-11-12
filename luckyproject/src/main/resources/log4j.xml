@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.test.web">
+	<logger name="com.cafe24.glaemfdjd">
 		<level value="info" />
 	</logger>
 	
