@@ -42,4 +42,18 @@
 		<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
 	</beans:bean>
+	
+	<!-- 타일즈 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/layout.xml</beans:value>
+			</beans:list>
+		</beans:property>	
+		<beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
+	</beans:bean>
+
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" id="viewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</beans:bean>
 </beans:beans>
