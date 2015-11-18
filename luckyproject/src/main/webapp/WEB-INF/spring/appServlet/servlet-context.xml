@@ -20,15 +20,41 @@
 <!-- 		<beans:property name="prefix" value="/WEB-INF/views/" /> -->
 <!-- 		<beans:property name="suffix" value=".jsp" /> -->
 <!-- 	</beans:bean> -->
-	
-	<context:component-scan base-package="com.cafe24.glaemfdjd" />
+
+	<!-- 	패키지 스캔 -->
+	<context:component-scan base-package="com.cafe24.glaemfdjd.account.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.accountSubject.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.cashFlow.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.companyInfo.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.contract.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.dept.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.emp.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.gisungPay.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.inteEquip.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.inteEquipFix.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.ongoing.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.ongoingFacility.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.ongoingInteEmp.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.outsourcing.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.planFacility.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.planInteEmp.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.schedule.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.sign.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.wbsCate.*" />
+	<context:component-scan base-package="com.cafe24.glaemfdjd.wbsPCate.*" />
 	
 	<!--   datasoruce  -->
+<!-- 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+<!-- 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!-- 		<beans:property name="url" value="jdbc:mysql://glaemfdjd.cafe24.com:3306/glaemfdjd"/> -->
+<!-- 		<beans:property name="username" value="glaemfdjd"/> -->
+<!-- 		<beans:property name="password" value="vmfhwprxm00"/> -->
+<!-- 	</beans:bean> -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<beans:property name="url" value="jdbc:mysql://glaemfdjd.cafe24.com:3306/glaemfdjd"/>
-		<beans:property name="username" value="glaemfdjd"/>
-		<beans:property name="password" value="vmfhwprxm00"/>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/dblucky?"/>
+		<beans:property name="username" value="dbidlucky"/>
+		<beans:property name="password" value="0000"/>
 	</beans:bean>
 	<!--  transaction manager  -->
 	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -37,9 +63,9 @@
 	<!--  mybatis  -->
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/>
-<!-- 		<beans:property name="mapperLocations" value="classpath:com/cafe24/glaemfdjd/service/mybatis-Mapper.xml"/> -->
+		<beans:property name="mapperLocations" value="classpath:com/cafe24/glaemfdjd/mapper/*.xml"/>
 	</beans:bean>
-		<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
 	</beans:bean>
 	

@@ -1,5 +1,0 @@
-<mapper namespace="com.cafe24.glaemfdjd.service">
-<!-- 	<update id="updateUser" parameterType="com.test.model.User"> -->
-<!-- 	UPDATE USER SET user_pw=#{userPw} WHERE user_id=#{userId} -->
-<!-- 	</update> -->
-</mapper>
