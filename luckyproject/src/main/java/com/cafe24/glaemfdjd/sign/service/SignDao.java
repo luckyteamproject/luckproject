@@ -21,7 +21,7 @@ public class SignDao implements SignDaoImpl{
 	@Override
 	public EmpDto SelectCodeAndPw(String emp_code) {
 		logger.debug("EmpDto : SelectIDAndPw()!");
-		
+	
 		return query.selectOne(QS+".selectIdAndPw", emp_code);
 	} 
 }
