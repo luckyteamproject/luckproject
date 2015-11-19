@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<form action="/loginProcess" method="post">
+<form action="/index.lu" method="post">
 <label id="emp_code"></label>
 사원번호 : <input type="text" id="emp_code" name="emp_code">
 <label id="emp_password"></label>

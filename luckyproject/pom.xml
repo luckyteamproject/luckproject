@@ -14,7 +14,18 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-			<!--  tiles  -->		
+        <!-- jackson json -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+		<!--  tiles  -->		
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
@@ -97,7 +108,27 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>	
-		
+		 <!-- Spring Security -->  
+		 <dependency>
+		      <groupId>org.springframework.security</groupId>
+		      <artifactId>spring-security-core</artifactId>
+		      <version>${org.springframework-version}</version>
+		  </dependency>
+		  <dependency>
+		      <groupId>org.springframework.security</groupId>
+		      <artifactId>spring-security-web</artifactId>
+		      <version>${org.springframework-version}</version>
+		  </dependency>
+		  <dependency>
+		      <groupId>org.springframework.security</groupId>
+		      <artifactId>spring-security-config</artifactId>
+		      <version>${org.springframework-version}</version>
+		  </dependency>
+		  <dependency>
+		      <groupId>org.springframework.security</groupId>
+		      <artifactId>spring-security-taglibs</artifactId>
+		      <version>${org.springframework-version}</version>
+		  </dependency>
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

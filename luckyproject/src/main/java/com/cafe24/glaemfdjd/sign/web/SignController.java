@@ -15,60 +15,64 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.w3c.dom.events.Event;
 
 import com.cafe24.glaemfdjd.emp.domain.EmpDto;
 import com.cafe24.glaemfdjd.sign.service.SignService;
 
-
 @Controller
-@SessionAttributes(value={"emp_code", "emp_password", ""})
-public class SignController implements HttpSessionListener{
+@SessionAttributes(value={"loginEmp"})
+public class SignController {
 	private static final Logger logger = LoggerFactory.getLogger(SignController.class);
 	
 	@Autowired
 	SignService signService;
 	
+	//로그인 폼
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loginForm(Locale locale, Model model) {
 		logger.info("SignController {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "content/loginForm.layoutTypeA";
+		return "content/loginForm.layoutA";
 	}
 	
-	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-	public String home(Model model, @RequestParam(value="emp_code") String emp_code, 
-									@RequestParam(value="emp_password") String emp_password) {
-		logger.info("SignController");
+	//로그인 성공 후 주소창에서 index를 직접 입력했을 때 session값 유지한 채 index 페이지로 이동
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public @ResponseBody String loginProcess(@ModelAttribute(value="loginEmp") EmpDto empDto, Model model) {
+		logger.info("SignController : loginProcess()! : GET");
+
+		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
+		model.addAttribute("loginEmp", empDto);
+		
+		return "content/index.layoutA";
+	}
+	
+	//로그인
+	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	public String loginProcess(Model model, @RequestParam(value="emp_code") String emp_code, 
+											@RequestParam(value="emp_password") String emp_password) {
+		logger.info("SignController : loginProcess()! : POST");
 		logger.debug("@RequestParam <- emp_code : {}", emp_code);
 		logger.debug("@RequestParam <- emp_password : {}", emp_password);
 		
-		EmpDto empDto;
+		EmpDto empDto = signService.loginProcess(emp_code, emp_password);
 		
-		empDto = signService.loginProcess(emp_code, emp_password);
+		logger.debug("SignController : loginProcess : empDto : {}", empDto);
 		
-		return "content/loginForm.layoutTypeA";
+		if(empDto==null){
+			return "content/loginForm.layoutA";
+		}
+		
+		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
+		model.addAttribute("loginEmp", empDto);
+		
+		return "content/index.layoutA";
 	}
 
-
-	@Override
-	public void sessionCreated(HttpSessionEvent event) {
-		logger.debug("세션 생성");
-	}
-
-	@Override
-	public void sessionDestroyed(HttpSessionEvent arg0) {
-		logger.debug("세션 삭제");
-		
-	}}
+}

@@ -9,22 +9,22 @@
 <tiles-definitions>
 <!-- 	메인 템플릿 -->
 <!-- name="" 로 확장자 호출 -->
-	<definition template="/WEB-INF/views/layout/main.jsp" name=".layoutTypeA">
+	<definition template="/WEB-INF/views/layout/main.jsp" name=".layoutA">
 	<put-attribute name="hearder" value="/WEB-INF/views/layout/hearder.jsp"/>
 	<put-attribute name="left" value="/WEB-INF/views/layout/left.jsp"/>
 	<put-attribute name="content" value=""/>
 	<put-attribute name="footder" value="/WEB-INF/views/layout/footder.jsp"/>
 	</definition>
 	
-	<definition name="*/*.layoutTypeA" extends=".layoutTypeA">
+	<definition name="*/*.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*.layoutTypeA" extends=".layoutTypeA">
+	<definition name="*/*/*.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*/*.layoutTypeA" extends=".layoutTypeA">
+	<definition name="*/*/*/*.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp"/>
 	</definition>
 </tiles-definitions>

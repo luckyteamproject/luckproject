@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cafe24.glaemfdjd.emp.domain.EmpDto;
-import com.cafe24.glaemfdjd.sign.web.SignController;
 
 @Repository
 public class SignDao implements SignDaoImpl{
@@ -16,13 +15,13 @@ public class SignDao implements SignDaoImpl{
 	
 	@Autowired
 	private SqlSession query;
+	private String QS = "com.cafe24.glaemfdjd.sign";
 
+	//로그인시 사원번호와 비밀번호를 확인하기 위한 메서드
 	@Override
-	public EmpDto SelectIDAndPw(String emp_code) {
-		logger.debug("EmpDto : SelectIDAndPw()");
+	public EmpDto SelectCodeAndPw(String emp_code) {
+		logger.debug("EmpDto : SelectIDAndPw()!");
 		
-		EmpDto empDto = query.selectOne("com.cafe24.glaemfdjd.sign.selectIdAndPw", emp_code);
-		return empDto;
-	}
-	 
+		return query.selectOne(QS+".selectIdAndPw", emp_code);
+	} 
 }
