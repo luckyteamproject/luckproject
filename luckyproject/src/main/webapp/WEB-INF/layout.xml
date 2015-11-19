@@ -16,15 +16,27 @@
 	<put-attribute name="footder" value="/WEB-INF/views/layout/footder.jsp"/>
 	</definition>
 	
-	<definition name="*/*.lu.layoutA" extends=".layoutA">
+<!-- 	사이트 전체 레이아웃 -->
+	<definition name="*/*.lu.layoutC" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*.lu.layoutA" extends=".layoutA">
+	<definition name="*/*/*.lu.layoutC" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*/*.lu.layoutA" extends=".layoutA">
+	<definition name="*/*/*/*.lu.layoutC" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp"/>
 	</definition>
+	
+	
+<!-- 	처음 로그인(signForm.jsp) 할 때 레이아웃임 -->
+	<definition template="/WEB-INF/views/sign/signLayout.jsp" name=".layoutS">
+	<put-attribute name="content" value=""/>
+	</definition>
+	
+	<definition name="*/*.lu.layoutS" extends=".layoutS">
+	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+<!-- 	=================== -->
 </tiles-definitions>

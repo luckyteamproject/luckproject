@@ -4,6 +4,6 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cafe24.glaemfdjd.sign">
 	<select id="selectIdAndPw" parameterType="String" resultType="com.cafe24.glaemfdjd.emp.domain.EmpDto">
-		select emp_code, emp_password from emp where emp_code = #{emp_code};
+		select emp_code, emp_password, emp_level, emp_name from emp where emp_code = #{emp_code};
 	</select>
 </mapper>

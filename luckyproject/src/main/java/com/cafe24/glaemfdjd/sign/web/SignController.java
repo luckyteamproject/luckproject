@@ -27,7 +27,7 @@ import com.cafe24.glaemfdjd.emp.domain.EmpDto;
 import com.cafe24.glaemfdjd.sign.service.SignService;
 
 @Controller
-@SessionAttributes(value={"loginEmp"})
+@SessionAttributes(value={"signEmp"})
 public class SignController {
 	private static final Logger logger = LoggerFactory.getLogger(SignController.class);
 	
@@ -36,43 +36,43 @@ public class SignController {
 	
 	//로그인 폼
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loginForm(Locale locale, Model model) {
+	public String signForm(Locale locale, Model model) {
 		logger.info("SignController {}.", locale);
 		
-		return "content/loginForm.lu.layoutA";
+		return "sign/signForm.lu.layoutS";
 	}
 	
 	//로그인 성공 후 주소창에서 index를 직접 입력했을 때 session값 유지한 채 index 페이지로 이동
 	@RequestMapping(value = "/index.lu", method = RequestMethod.GET)
-	public String loginProcess(@ModelAttribute(value="loginEmp") EmpDto empDto, Model model) {
-		logger.info("SignController : loginProcess()! : GET");
+	public String signInProcess(@ModelAttribute(value="signEmp") EmpDto dbEmpDto, Model model) {
+		logger.info("SignController : signInProcess()! : GET");
 		
 		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
-		model.addAttribute("loginEmp", empDto);
+		model.addAttribute("signEmp", dbEmpDto);
 		
-		return "content/index.lu.layoutA";
+		return "index/index.lu.layoutC";
 	}
 
 	//로그인
 	@RequestMapping(value = "/index.lu", method = RequestMethod.POST)
-	public String loginProcess(Model model, @RequestParam(value="emp_code") String emp_code, 
-											@RequestParam(value="emp_password") String emp_password) {
-		logger.info("SignController : loginProcess()! : POST");
+	public String signInProcess(Model model, @RequestParam(value="emp_code") String emp_code, 
+											 @RequestParam(value="emp_password") String emp_password) {
+		logger.info("SignController : signInProcess()! : POST");
 		logger.debug("@RequestParam <- emp_code : {}", emp_code);
 		logger.debug("@RequestParam <- emp_password : {}", emp_password);
 		
-		EmpDto empDto = signService.loginProcess(emp_code, emp_password);
+		EmpDto empDto = signService.signInProcess(emp_code, emp_password);
 		
-		logger.debug("SignController : loginProcess : empDto : {}", empDto);
+		logger.debug("SignController : signInProcess : empDto : {}", empDto);
 		
 		if(empDto==null){
-			return "content/loginForm.layoutA";
+			return "sign/signForm.lu.layoutS";
 		}
 		
 		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
-		model.addAttribute("loginEmp", empDto);
+		model.addAttribute("signEmp", empDto);
 		
-		return "content/index.lu.layoutA";
+		return "index/index.lu.layoutC";
 	}
 
 }

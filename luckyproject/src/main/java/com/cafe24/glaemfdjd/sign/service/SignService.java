@@ -15,7 +15,7 @@ public class SignService implements SignServiceImpl{
 	private SignDao signDao;
 
 	@Override
-	public EmpDto loginProcess(String emp_code, String emp_password) {
+	public EmpDto signInProcess(String emp_code, String emp_password) {
 		
 		logger.debug("SignService : loginProcess!");
 		logger.debug("SignService : loginProcess : emp_code : {}",emp_code);

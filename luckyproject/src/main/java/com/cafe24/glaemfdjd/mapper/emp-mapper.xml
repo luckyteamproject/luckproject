@@ -2,8 +2,12 @@
 <!DOCTYPE mapper
    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cafe24.glaemfdjd.service">
-<!-- 	<update id="updateUser" parameterType="com.test.model.User"> -->
-<!-- 	UPDATE USER SET user_pw=#{userPw} WHERE user_id=#{userId} -->
-<!-- 	</update> -->
+<mapper namespace="com.cafe24.glaemfdjd.emp">
+	<select id="SelectEmpInfo" parameterType="String" resultType="com.cafe24.glaemfdjd.emp.domain.EmpDto">
+		select e.emp_code,emp_class,emp_password,emp_name,emp_level,emp_gender,emp_address,emp_hiredate,emp_retiredate,emp_career,emp_sarlary,emp_bonus,emp_position,emp_salarybank,emp_salarybanknumber,emp_license,emp_licensecode,emp_addfile
+		from emp e, dept d where e.emp_code = #{emp_code} and e.dept_code = d.dept_code;
+	</select>
+	<select id="SelectEmpDeptInfo" parameterType="String" resultType="com.cafe24.glaemfdjd.dept.domain.DeptDto">
+		select dept_code,dept_name,dept_location,emp_code,dept_maxmember,dept_phone from dept where dept_code = (select dept_code from emp where emp_code=#{emp_code})
+	</select>
 </mapper>

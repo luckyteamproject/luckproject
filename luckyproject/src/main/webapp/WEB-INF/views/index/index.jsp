@@ -9,6 +9,5 @@
 </script>
 </head>
 <body>
-left
 </body>
 </html>

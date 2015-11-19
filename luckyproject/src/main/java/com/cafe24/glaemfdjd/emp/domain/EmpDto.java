@@ -6,9 +6,9 @@ import com.cafe24.glaemfdjd.dept.domain.DeptDto;
 
 public class EmpDto {
 	String emp_code;
-	CompanyInfoDto company_info;
-	DeptDto dept;
-	ClientDto client;
+	CompanyInfoDto companyInfoDto;
+	DeptDto deptDto;
+	ClientDto clientDto;
 	String emp_class;
 	String emp_password;
 	String emp_name;
@@ -33,23 +33,23 @@ public class EmpDto {
 	public void setEmp_code(String emp_code) {
 		this.emp_code = emp_code;
 	}
-	public CompanyInfoDto getCompany_info() {
-		return company_info;
+	public CompanyInfoDto getCompanyInfoDto() {
+		return companyInfoDto;
 	}
-	public void setCompany_info(CompanyInfoDto company_info) {
-		this.company_info = company_info;
+	public void setCompanyInfoDto(CompanyInfoDto companyInfoDto) {
+		this.companyInfoDto = companyInfoDto;
 	}
-	public DeptDto getDept() {
-		return dept;
+	public DeptDto getDeptDto() {
+		return deptDto;
 	}
-	public void setDept(DeptDto dept) {
-		this.dept = dept;
+	public void setDeptDto(DeptDto deptDto) {
+		this.deptDto = deptDto;
 	}
-	public ClientDto getClient() {
-		return client;
+	public ClientDto getClientDto() {
+		return clientDto;
 	}
-	public void setClient(ClientDto client) {
-		this.client = client;
+	public void setClientDto(ClientDto clientDto) {
+		this.clientDto = clientDto;
 	}
 	public String getEmp_class() {
 		return emp_class;
