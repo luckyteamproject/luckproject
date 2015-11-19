@@ -16,15 +16,15 @@
 	<put-attribute name="footder" value="/WEB-INF/views/layout/footder.jsp"/>
 	</definition>
 	
-	<definition name="*/*.layoutA" extends=".layoutA">
+	<definition name="*/*.lu.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*.layoutA" extends=".layoutA">
+	<definition name="*/*/*.lu.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
 	
-	<definition name="*/*/*/*.layoutA" extends=".layoutA">
+	<definition name="*/*/*/*.lu.layoutA" extends=".layoutA">
 	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp"/>
 	</definition>
 </tiles-definitions>

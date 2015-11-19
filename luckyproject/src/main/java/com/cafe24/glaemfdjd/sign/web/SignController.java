@@ -39,22 +39,22 @@ public class SignController {
 	public String loginForm(Locale locale, Model model) {
 		logger.info("SignController {}.", locale);
 		
-		return "content/loginForm.layoutA";
+		return "content/loginForm.lu.layoutA";
 	}
 	
 	//로그인 성공 후 주소창에서 index를 직접 입력했을 때 session값 유지한 채 index 페이지로 이동
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/index.lu", method = RequestMethod.GET)
 	public String loginProcess(@ModelAttribute(value="loginEmp") EmpDto empDto, Model model) {
 		logger.info("SignController : loginProcess()! : GET");
-
+		
 		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
 		model.addAttribute("loginEmp", empDto);
 		
-		return "content/index.layoutA";
+		return "content/index.lu.layoutA";
 	}
-	
+
 	//로그인
-	@RequestMapping(value = "/index", method = RequestMethod.POST)
+	@RequestMapping(value = "/index.lu", method = RequestMethod.POST)
 	public String loginProcess(Model model, @RequestParam(value="emp_code") String emp_code, 
 											@RequestParam(value="emp_password") String emp_password) {
 		logger.info("SignController : loginProcess()! : POST");
@@ -72,7 +72,7 @@ public class SignController {
 		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
 		model.addAttribute("loginEmp", empDto);
 		
-		return "content/index.layoutA";
+		return "content/index.lu.layoutA";
 	}
 
 }
