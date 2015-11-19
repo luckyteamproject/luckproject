@@ -44,7 +44,7 @@ public class SignController {
 	
 	//로그인 성공 후 주소창에서 index를 직접 입력했을 때 session값 유지한 채 index 페이지로 이동
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public @ResponseBody String loginProcess(@ModelAttribute(value="loginEmp") EmpDto empDto, Model model) {
+	public String loginProcess(@ModelAttribute(value="loginEmp") EmpDto empDto, Model model) {
 		logger.info("SignController : loginProcess()! : GET");
 
 		//session에 저장된 loginEmp를 model에 저장해 뿌려줌
