@@ -5,12 +5,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<form action="/index.lu" method="post">
-<label id="emp_code"></label>
-사원번호 : <input type="text" id="emp_code" name="emp_code">
-<label id="emp_password"></label>
-비밀번호 : <input type="password" id="emp_password" name="emp_password">
-<input type="submit" value="sign">
-</form>
+	<form action="/index.lu" method="post">
+	<label id="emp_code"></label>
+	사원번호 : <input type="text" id="emp_code" name="emp_code">
+	<label id="emp_password"></label>
+	비밀번호 : <input type="password" id="emp_password" name="emp_password">
+	<input type="submit" value="sign">
+	</form>
 </body>
 </html>
