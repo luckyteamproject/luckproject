@@ -7,6 +7,5 @@
 <body>
 empInfo
 ${empDto.getDeptDto().dept_code }
-
 </body>
 </html>
